@@ -1,0 +1,12 @@
+・リダイレクト
+
+・相対パス、絶対パス
+
+・POSTリクエスト,GETリクエスト
+GETメソッド：値をURLの後ろにくっつけて送る
+request.args.get(""),
+POSTメソッド：値を見えない所に隠して送る
+request.form.get(""),
+
+・複数編集
+command + D

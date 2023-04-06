@@ -1,0 +1,35 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends 'base.html' %}
+{% block content %}
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+<h3>Sign In</h3>
+<form method='POST'>
+    {{ form.csrf_token }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.password) }}
+    {{ form.submit()}}
+</form>
+<!-- 
+<form action=" {{ url_for('home') }} ">
+    <div>
+        <label for="email"></label>
+        <input type="text" name="email" placeholder="Email" class="form">
+    </div>
+    <div>
+        <label for="password"></label>
+        <input type="text" name="password" placeholder="Password" class="form">
+    </div>
+    <div>
+        <label></label>
+        <span><input type="submit" value="SIGN IN" class="button_default_color"></span>
+    </div>
+    <p>
+        <a href="signup" class="default_color lighter">Sign up</a>
+    </p>
+    <p>
+        <a href="//////////////////////////////" class="default_color lighter">Forgot your password?</a>
+    </p>
+</form> -->
+{% endblock %}

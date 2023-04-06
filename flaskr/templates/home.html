@@ -1,0 +1,14 @@
+<!--継承先-->
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        {% if current_user.is_authenticated %}
+        <p>ユーザーログイン済み{{current_user.username}}</p>
+        {% else %}
+        <p>ログイン or 登録をしてください</p>
+        {% endif %}
+    </div>
+<!-- {% for user_info in user_info %}
+<h1>{{ user_info.email }}</h1>
+{% endfor %} -->
+{% endblock %}

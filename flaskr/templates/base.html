@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- レスポンシブデザイン -->
+        <!-- 表示領域の横幅をデバイスと同じ横幅にする（width=device-width -->
+        <!-- 表示倍率を1倍にする（initial-scale=1） -->
+        <!-- iOSのSafariで表示倍率を自動的に縮小する処理を無効にする（shrink-to-fit=no） -->
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+
+
+        <!-- ***** css ***** -->
+        <link rel= "stylesheet" href= "{{ url_for('static',filename='css/base.css') }}">
+        <!-- リセット CSS-->
+        <link rel= "stylesheet" href="{{ url_for('static',filename='css/normalize.css') }}">
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+        <!-- icon a photo -->
+        <link rel="shortcut icon" href="static/images/logo_logical_tapes.png">
+        <!--page毎にタイトルを変えれるように(-を入れたい)-->
+        <title>{{ add_to_the_title }} - Logical Tapes</title>
+        <!-- 概要(SEO重要) -->
+        <meta name="description" content="Apparel and good sounds.">
+    </head>
+    <body>
+        <div class="video_wrapper">
+            {% if add_to_the_title == "Home" %}
+                <video autoplay muted playsinline loop>
+                    <source src="../static/movies/logical_background_movie.mp4" type="video/mp4">
+            {% else %}
+                <video autoplay muted playsinline loop class="background">
+                    <source src="../static/movies/logical_background_movie.mp4" type="video/mp4">
+            {% endif %}
+            </video>
+        </div>
+        <header>
+            <ul class="list_nav_header">
+                {% if current_user.is_authenticated %}
+                <li><a href="{{url_for('app.logout')}}">LOGOUT</a></li>
+                {% else %}
+                <li><a href="{{url_for('signin')}}" class="default_color">SIGN IN</a></li>
+                <li><a href="{{url_for('signup')}}" class="default_color">SIGN UP</a></li>
+                {% endif %}
+                <li><a href="{{url_for('cart')}}" class="default_color">CART({{ number }})</a></li>
+                <li><a href="{{url_for('user')}}" class="default_color">USER</a></li>
+            </ul>
+        </header> 
+        <div class="wrapper">
+            <aside class="sidebar">
+                <nav class="sidebar_global_navi">
+                    <ul class="list_nav_aside">
+                        <li>
+                            <a href="/" class="default_color">HOME</a>
+                        </li>
+                        <li>
+                            <a href="merch" class="default_color">MERCH</a>
+                        </li>
+                        <li>
+                            <a href="about" class="default_color">ABOUT</a>
+                        </li>
+                        <li>
+                            <a href="terms" class="default_color">TERMS</a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+            <main>
+                {% block content %}
+                {% endblock %}
+            </main>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends 'base.html' %}
+{% block content %}
+<h3>Sign Up</h3>
+<form method='POST'>
+    {{ form.csrf_token }}
+    {{ render_field(form.username) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.password_confirm) }}
+    {{ form.submit()}}
+</form>
+<!-- <form class="label_hidden" method="POST">
+    <div>
+        <label for="first_name"></label>
+        <input type="text" name="first_name" placeholder="First Name" class="form">
+    </div>
+    <div>
+        <label for="last_name"></label>
+        <input type="text" name="last_name" placeholder="Last Name" class="form">
+    </div>
+    <div>
+        <label for="email"></label>
+        <input type="text" name="email" placeholder="Email" class="form">
+    </div>
+    <div>
+        <label for="password"></label>
+        <input type="text" name="password" placeholder="Password" class="form">
+    </div>
+    <div>
+        <label></label>
+        <input type="submit" value="CREATE" class="button_default_color">
+    </div>
+</form> -->
+{% endblock %}
